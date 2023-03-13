@@ -1,0 +1,393 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;500;700;900&display=swap');
+
+
+:root {
+    font-size: 62.5%;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 1.5rem;
+
+    background: linear-gradient(45deg, rgba(200,251,161,1) 0%, rgba(226,249,228,1) 100%);
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6rem;
+
+    min-height: screen;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 460px;
+    gap: 3rem;
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 4rem;
+}
+
+.container-field {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .5rem 2rem;
+}
+
+textarea, input {
+    border-radius: 1rem;
+    border: .2em solid #5D9C59;
+    background-color: #DDF7E3;
+}
+
+textarea:focus, input:focus {
+    outline: .2em solid #C7E8CA;
+}
+
+@media (max-width: 500px) {
+    .form {
+        width: 100%;
+    }
+
+    .container-field {
+        display: inline;
+    }
+}
+
+.projectFieldHelp {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    justify-content: end;
+}
+
+.projectField span {
+    color: #5D9C59;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.projectField p {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.projectField textarea {
+    resize: none;
+    width: 100% !important;
+    /*max-width: 350px;*/
+    height: 10rem !important;
+    max-height: 40rem;
+    font-size: 1.4rem;
+    padding: 1rem;
+}
+
+.projectField input {
+    padding: 2rem;
+    width: 100%;
+    height: 5.5rem;
+}
+
+.form input[type=submit] {
+    width: 100%;
+}
+
+/*---Botões---*/
+
+.saveButton {
+    background-color: #5D9C59;
+    border: none;
+    border-radius: 1rem;
+    padding: 2rem 1rem;
+    cursor: pointer;
+    color: white;
+    font-size: 2.4rem;
+
+    transition: 0.2s;
+}
+
+.saveButton:hover {
+    transform: scale(1.02);
+    opacity: 0.9;
+}
+
+/*>>Botões do Modal<<*/
+
+#closeButton, #saveButton {
+    transition: 0.2s;
+}
+
+#closeButton:hover {
+    color: #DF2E38;
+    transform: scale(1.5);
+}
+
+#saveButton:hover {
+    color: #5D9C59;
+    transform: scale(1.25);
+}
+
+#projects-warning {
+    text-align: center;
+    font-weight: 900;
+    font-size: 4rem;
+}
+
+/*---Projetos---*/
+
+/*Projects-> Grupo principal | Project -> Grupo individual para cada projeto*/
+
+.projects {
+    width: 35rem;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    
+    gap: 1rem;
+
+    font-size: 1.2rem;
+}
+
+.projects > .projectFieldHelp span{
+    font-size: 1.5rem;
+    color: #5D9C59;
+}
+
+.projects-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    overflow-y: scroll;
+    padding: 1rem;
+}
+
+.projects-search {
+    display: flex;
+    gap: 1rem;
+    padding-left: 1rem;
+}
+
+.projects-search input {
+    padding: .5rem 1rem;
+    width: 100%;
+}
+
+.projects-search button {
+    min-width: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    background-color: #5D9C59;
+    border-radius: 1rem;
+    color: white;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.projects-search > button:nth-child(2) {
+    background-color: #DF2E38;
+}
+
+.projects-search button:hover {
+    opacity: 0.9;
+    transform: scale(1.1);
+}
+
+/*---PseudoElements---*/
+
+::placeholder {
+    color: #609966;
+}
+
+::-webkit-scrollbar {
+    width: 1em;
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 1rem;
+    background-color: #5D9C59;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #609966;
+}
+
+@media (max-width: 910px) {
+    .projects {
+        width: 100%;
+        max-width: 46rem;
+    }
+}
+
+/*>>Projeto individual<<*/
+
+.project {
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.3);;
+}
+
+.project-heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+
+    background-color: #C7E8CA;
+}
+
+.project-content {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+
+    background-color: #DDF7E3;
+}
+
+.project-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+
+    background-color: #FBFFB1;
+}
+
+.footer-edit, .footer-exclude {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.footer-edit:hover, .footer-exclude:hover {
+    transform: scale(1.05);
+    color: #5D9C59;
+}
+
+.footer-exclude:hover {
+    color: #DF2E38;
+}
+
+.project-field p{
+    font-size: 1.2rem;
+}
+
+.project-field span {
+    font-weight: 600;
+}
+
+.project-h-content span {
+    font-weight: 600;
+}
+
+
+/*---Modal---*/
+
+.modal {
+    position: fixed;
+    top: 50;
+    left: 50;
+
+    background-color: #E9EDC9;
+
+    max-width: 70rem;
+
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 1rem;
+    overflow: hidden;
+
+    z-index: 10;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    padding: 2rem;
+
+    background-color: #FBFFB1;
+}
+
+.modal-header span {font-size: 2.8rem;}
+
+.modal-content {
+    display: flex;
+    padding: 2rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.modal-field {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 30rem;
+}
+
+.modal-field input{
+    padding: .5rem 1rem;
+}
+
+.modal-field span {font-size: 1.8rem; font-weight: 700;}
+
+.modal-field p {text-align: justify;}
+
+#modal-fade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-options {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.modal-options span {cursor: pointer;}
+
+.modal-input{
+    resize: none;
+    width: 100% !important;
+    height: 10rem !important;
+    max-height: 40rem;
+    font-size: 1.2rem;
+    padding: 1rem;
+}
+
+
+/*---Classe utilitárias---*/
+
+.hide {
+    display: none;
+}

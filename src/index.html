@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="index.js" defer></script>
+
+    <title>Comunicação</title>
+</head>
+<body>
+
+    <div class="main">
+        <div action="" class="form">
+            <h1>Criar novo projeto</h1>
+            <div class="container-field">
+
+                <div class="projectField">
+                    <p>Número do projeto</p>
+                    <input type="number" min="1" id="projectNumber" placeholder="Ex. 99">
+                    <div class="projectFieldHelp">
+                        <span class="material-symbols-outlined">help</span>
+                        <span>Máximo de 999</span>
+                    </div>
+                </div>
+                <div class="projectField">
+                    <p>Dificuldade Técnica</p>
+                    <input type="number" min="1" max="5" id="projectDifficulty" placeholder="Ex. 5">
+                    <div class="projectFieldHelp">
+                        <span class="material-symbols-outlined">help</span>
+                        <span>Entre 1 e 5</span>
+                    </div>
+                </div>
+                
+                <div class="projectField">
+                    <p>Descrição</p>
+                    <textarea id="projectDescription" maxlength="200" placeholder="Ex. Um projeto sobre..."></textarea>
+                    <div class="projectFieldHelp">
+                        <span class="material-symbols-outlined">help</span>
+                        <span>Máximo de 200 caracteres</span>
+                    </div>
+                </div>
+                <div class="projectField">
+                    <p>Aplicação</p>
+                    <textarea id="projectApplication" maxlength="100" placeholder="Ex. Com o intuito de..."></textarea>
+                    <div class="projectFieldHelp">
+                        <span class="material-symbols-outlined">help</span>
+                        <span>Máximo de 100 caracteres</span>
+                    </div>
+                </div>
+                <div class="projectField">
+                    <p>Setores para cópia</p>
+                    <textarea id="projectCopy" maxlength="100" placeholder="Ex. Avisar os setores..."></textarea>
+                    <div class="projectFieldHelp">
+                        <span class="material-symbols-outlined">help</span>
+                        <span>Máximo de 100 caracteres</span>
+                    </div>
+                </div>
+                <div class="projectField">
+                    <p>Contingência</p>
+                    <textarea id="projectContingency" maxlength="100" placeholder="Ex. No caso de falha..."></textarea>
+                    <div class="projectFieldHelp">
+                        <span class="material-symbols-outlined">help</span>
+                        <span>Máximo de 100 caracteres</span>
+                    </div>
+                </div>
+            </div>
+            
+            <button onclick="addProject()" class="saveButton">Salvar Projeto</button>
+
+        </div>
+
+        <div class="projects">
+            <div class="projectFieldHelp">
+                <span class="material-symbols-outlined">help</span>
+                <span>Por Número ou Descrição</span>
+            </div>
+            <div class="projects-search">
+                <input type="text" id="search-projects-input" placeholder="Pesquise um Projeto">
+                <button><span class="material-symbols-outlined" id="search-projects-clear" onclick="showProjects()">close</span></button>
+                <button><span class="material-symbols-outlined" id="search-projects-button" onclick="searchProjects()">search</span></button>
+            </div>
+            <div class="projects-content" id="projectGroup">
+                <span id="projects-warning" class="hide">Nenhum projeto encontrado!</span>
+            </div>
+            <!--<div class="project">
+                <div class="project-heading">
+                    <div class="project-h-content">
+                        <span>Número</span>
+                        <span>#45</span>
+                    </div>
+                    <div class="project-h-content">
+                        <span>Dificuldade</span>
+                        <span>4</span>
+                    </div>
+                </div>
+
+                <div class="project-content">
+                    <div class="project-field">
+                        <span>Descrição</span>
+                        <p>In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Duis sapien nunc, commodo et, interdum In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Duis sapien nunc, commodo et, interdum</p>
+                    </div>
+                    <div class="project-field">
+                        <span>Aplicação</span>
+                        <p>In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Duis sapien nunc, commodo et, interdum</p>
+                    </div>
+                    <div class="project-field">
+                        <span>Setores para Cópia</span>
+                        <p>In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Duis sapien nunc, commodo et, interdum</p>
+                    </div>
+                    <div class="project-field">
+                        <span>Contingência</span>
+                        <p>In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Duis sapien nunc, commodo et, interdum</p>
+                    </div>
+                </div>
+
+                <div class="project-footer">
+                    <div class="footer-edit" onclick="toggleModal()">
+                        <span class="material-symbols-outlined">edit</span>
+                        <span>Editar</span>
+                    </div>
+                    <div class="footer-exclude">
+                        <span class="material-symbols-outlined">delete</span>
+                        <span>Excluir</span>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+
+        <div id="modal-fade" class="hide"></div>
+        <div class="modal hide" id="modal">
+            <div class="modal-header">
+                <span>Editar Projeto</span>
+                <div class="modal-options">
+                    <span class="material-symbols-outlined" id="saveButton">save</span>
+                    <span class="material-symbols-outlined" id="closeButton" onclick="toggleModal()">close</span>
+                </div>
+            </div>
+            <div class="modal-content">
+                <div class="modal-field">
+                    <span>Número do Projeto</span>
+                    <input type="number" id="edit-number">
+                </div>
+                <div class="modal-field">
+                    <span>Dificuldade</span>
+                    <input type="number" id="edit-difficulty">
+                </div>
+                <div class="modal-field">
+                    <span>Descrição</span>
+                    <textarea class="modal-input" id="edit-description"></textarea>
+                </div>
+                <div class="modal-field">
+                    <span>Aplicação</span>
+                    <textarea class="modal-input" id="edit-application"></textarea>
+                </div>
+                <div class="modal-field">
+                    <span>Setores para Cópia</span>
+                    <textarea class="modal-input" id="edit-copy"></textarea>
+                </div>
+                <div class="modal-field">
+                    <span>Contingência</span>
+                    <textarea class="modal-input" id="edit-contingency"></textarea>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
